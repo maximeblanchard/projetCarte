@@ -95,6 +95,7 @@ public class Transfert<T> extends TransferHandler implements EventListener
 		     //StringSelection impTlémente cette interface,  nous l'utilisons donc
 		     return new StringSelection(carte.getVal()+":"+carte.getCarte().getId());
 	  }
+	  /*
 	 public void addClickListener(DnDListener listener)
 	 {
 	  ///   listeners.add(DnDListener.class, listener);
@@ -111,7 +112,7 @@ public class Transfert<T> extends TransferHandler implements EventListener
 	         {
 	             
 	         }
-	 }
+	 }*/
 	@Override
 	public void handleEvent(Event evt) {
 		// TODO Auto-generated method stub
