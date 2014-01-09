@@ -1,22 +1,22 @@
 package logicielProf.event;
 
-import logicielProf.donnee.Carte;
+import logicielProf.donnee.SuperCarte;
 
-public class DnDEvent<T>
+public class DnDEvent
 {
 
-	public Carte<T> getSource() {
+	public SuperCarte getSource() {
 		return source;
 	}
 
-	public Carte<T> getTarget() {
+	public SuperCarte getTarget() {
 		return target;
 	}
 
-	private Carte<T> source;
-	private Carte<T> target;
+	private SuperCarte source;
+	private SuperCarte target;
 	
-	public DnDEvent(Carte source, Carte target)
+	public DnDEvent(SuperCarte source, SuperCarte target)
 	{
 		super();
 		this.source = source;

@@ -16,6 +16,7 @@ import javax.swing.event.EventListenerList;
 import org.w3c.dom.events.Event;
 import org.w3c.dom.events.EventListener;
 
+import logicielProf.event.DnDEvent;
 import logicielProf.event.DnDListener;
 
 public class Transfert<T> extends TransferHandler implements EventListener
@@ -96,23 +97,23 @@ public class Transfert<T> extends TransferHandler implements EventListener
 		     return new StringSelection(carte.getVal()+":"+carte.getCarte().getId());
 	  }
 	  
-	 public void addClickListener(DnDListener listener)
-	 {
-	  ///   listeners.add(DnDListener.class, listener);
-		 listeners.add(DnDListener.class, listener);
-	 
-	 }
-	 public DnDListener[] getDnDListener()
-	 {
-	     return listeners.getListeners(DnDListener.class);
-	 }
-	 protected void fireGlisser(String name) 
-	 {  
-	         for(DnDListener listener : getDnDListener())
-	         {
-	             
-	         }
-	 }
+		 public void addClickListener(DnDListener listener)
+		 {
+		     listeners.add(DnDListener.class, listener);
+		 }
+		 public DnDListener[] getClickListener()
+		 {
+		     return listeners.getListeners(DnDListener.class);
+
+		     
+		 }
+		 protected void fireAchatDeFactory(String name) 
+		 {  
+		         for(DnDListener listener : getClickListener())
+		         {
+		        	 listener.deposer(new DnDEvent(null, null));
+		         }
+		 }
 	@Override
 	public void handleEvent(Event evt) {
 		// TODO Auto-generated method stub

@@ -1,7 +1,9 @@
 package logicielProf.event;
 
-public interface DnDListener<T>
+import java.util.EventListener;
+
+public interface DnDListener extends EventListener
 {
-	void glisser(DnDEvent<T> e);
-	void deposer(DnDEvent<T> e);
+	void glisser(DnDEvent e);
+	void deposer(DnDEvent e);
 }
