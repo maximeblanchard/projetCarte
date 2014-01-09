@@ -7,7 +7,11 @@ public class Carte<T extends Object>
 	private int id;
 	private T valeur;
 	
-	
+	/**
+	 * 
+	 * GetPosDep
+	 * @return
+	 */
 	public int getPosDep() {
 		return posDep;
 	}
