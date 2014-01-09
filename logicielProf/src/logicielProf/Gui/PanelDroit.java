@@ -6,19 +6,20 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 import logicielProf.donnee.Carte;
+import logicielProf.donnee.SuperCarte;
 
-public class PanelDroit<T> extends JPanel
+public class PanelDroit extends JPanel
 {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ArrayList<Carte<T>> cartes;
+	private ArrayList<SuperCarte> cartes;
 	
 	
 	
-	public PanelDroit(ArrayList<Carte<T>> nouvCartes)
+	public PanelDroit(ArrayList<SuperCarte> nouvCartes)
 	{
 		
 		cartes = nouvCartes;
@@ -27,19 +28,23 @@ public class PanelDroit<T> extends JPanel
 		
 		for(int i = 0;i<cartes.size();i++)
 		{
-			add(new CarteAff<T>(cartes.get(i),this));
+			add(new CarteAff(cartes.get(i),this));
 		}
 		
 		
 	}
 	
-	public  void setCarteVal(int idCarte, T val)
+	@SuppressWarnings("unchecked")
+	public  void setCarteVal(int idCarte, Object val)
 	{
 		for(int i = 0;i<cartes.size();i++)
 		{
 			if(cartes.get(i).getId() == idCarte)
 			{
-				cartes.get(i).setValeur(val);
+				if(val instanceof Carte )
+				{
+					((Carte<Object>)cartes.get(i)).setValeur(val);
+				}
 			}
 		}
 		refresh();
@@ -50,7 +55,7 @@ public class PanelDroit<T> extends JPanel
 		this.removeAll();
 		for(int i = 0;i<cartes.size();i++)
 		{
-			add(new CarteAff<T>(cartes.get(i),this));
+			add(new CarteAff(cartes.get(i),this));
 		}
 		revalidate();
 		repaint();

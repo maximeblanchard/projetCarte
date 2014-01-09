@@ -5,12 +5,13 @@ import java.util.ArrayList;
 import logicielProf.Gui.FenetreJeu;
 import logicielProf.donnee.Carte;
 import logicielProf.donnee.Jeu;
+import logicielProf.donnee.SuperCarte;
 
 public class Principale {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ArrayList<Carte<Integer>> liste = new ArrayList<Carte<Integer>>();
+		ArrayList<SuperCarte> liste = new ArrayList<SuperCarte>();
 		
 		liste.add(new Carte<Integer>(0, 0, 1, 1));
 		liste.add(new Carte<Integer>(0, 0, 2, 2));
@@ -54,7 +55,7 @@ public class Principale {
 		liste.add(new Carte<Integer>(0, 0, 38, 18));
 		liste.add(new Carte<Integer>(0, 0, 39, 19));
 		liste.add(new Carte<Integer>(0, 0, 40, 20));
-		new FenetreJeu<Integer>(new Jeu<Integer>("test", 0, liste));
+		new FenetreJeu<Integer>(new Jeu("test", 0, liste));
 	}
 
 }

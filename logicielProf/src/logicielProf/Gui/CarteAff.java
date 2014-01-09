@@ -6,15 +6,15 @@ import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.TransferHandler;
 import javax.swing.border.LineBorder;
 
 import logicielProf.donnee.Carte;
+import logicielProf.donnee.SuperCarte;
 
-public class CarteAff<T> extends JPanel
+public class CarteAff extends JPanel
 {
 	/**
 	 * 
@@ -25,33 +25,45 @@ public class CarteAff<T> extends JPanel
 	
     
 	private static final long serialVersionUID = 1L;
-	private Carte<T> carte;
+	private SuperCarte carte;
 	private String val;
-	private PanelDroit<T> parent;
+	private PanelDroit parent;
 	
-	public CarteAff(Carte<T> nouvCarte,PanelDroit<T> nouvParent)
+	@SuppressWarnings("rawtypes")
+	public CarteAff(SuperCarte nouvCarte,PanelDroit nouvParent)
 	{
-		setTransferHandler(new Transfert<T>(this));
+		// on set le transfer handler
+		setTransferHandler(new Transfert(this));
+		
 		carte = nouvCarte;
 		setPreferredSize(new Dimension(50, 100));
 		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(Color.black));
 		
 		parent = nouvParent;
-		addMouseListener(new MouseAdapter(){
+		
+		
+		this.addMouseListener(new MouseAdapter(){
 	        
 		     public void mousePressed(MouseEvent e)
 		     {
-		        System.out.println("EVENT !");
-		        JComponent lab = (JComponent)e.getSource();
-		        TransferHandler handle = lab.getTransferHandler();
-		        handle.exportAsDrag(lab, e, TransferHandler.MOVE);
+		    	// on recupère la source de l'envent
+		        CarteAff cible = (CarteAff)e.getSource();
+		        
+		        // on rècupère le transferhanlder
+		        TransferHandler handle = cible.getTransferHandler();
+		        
+		        
+		        handle.exportAsDrag(cible, e, TransferHandler.MOVE);
 		      }
 		   });
 		
 		
-		
-			val = carte.getValeur()+"";
+			if(carte instanceof Carte)
+			{
+				val = ((Carte)carte).getValeur()+"";
+			}
+			
 			this.add(new JLabel(val));
 		
 
@@ -59,7 +71,7 @@ public class CarteAff<T> extends JPanel
 		
 		
 	}
-	public Carte<T> getCarte()
+	public SuperCarte getCarte()
 	{
 		return carte;
 	}
@@ -75,7 +87,7 @@ public class CarteAff<T> extends JPanel
 		repaint();
 		revalidate();
 	}
-	public PanelDroit<T> getParent()
+	public PanelDroit getParent()
 	{
 		return parent;
 	}

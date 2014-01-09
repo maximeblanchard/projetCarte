@@ -13,13 +13,11 @@ import javax.swing.JLabel;
 import javax.swing.TransferHandler;
 import javax.swing.event.EventListenerList;
 
-import org.w3c.dom.events.Event;
-import org.w3c.dom.events.EventListener;
-
+import logicielProf.donnee.Carte;
 import logicielProf.event.DnDEvent;
 import logicielProf.event.DnDListener;
 
-public class Transfert<T> extends TransferHandler implements EventListener
+public class Transfert extends TransferHandler 
 {
 
 	/**
@@ -27,9 +25,9 @@ public class Transfert<T> extends TransferHandler implements EventListener
 	 */
 	private static final long serialVersionUID = 1L;
 	private final EventListenerList listeners = new EventListenerList();
-	private CarteAff<T> carte;
+	private CarteAff carte;
 	
-	public Transfert(CarteAff<T> nouvC)
+	public Transfert(CarteAff nouvC)
 	{
 		carte= nouvC;
 	}
@@ -57,17 +55,16 @@ public class Transfert<T> extends TransferHandler implements EventListener
 		  //On récupère notre objet Transferable, celui qui contient les données en transit
 		  Transferable data = support.getTransferable();
 		  String str = "";
-
+		  System.out.println(str);
 		  try {
 		    //Nous récupérons nos données en spécifiant ce que nous attendons		
 		    str = (String)data.getTransferData(DataFlavor.stringFlavor);
-		    //System.out.println("recu "+str);
-		    String[] param = str.split(":");
 		    
-		   System.out.println("old val : "+ param[0]+" id carte"+param[1]);
-		   carte.getParent().setCarteVal(Integer.parseInt(param[1]), (T)param[0]);
+		   Carte c =  (Carte) Carte.fromString(str);
+		    
+		   System.out.println(c);
 
-		   carte.getParent().setCarteVal(carte.getCarte().getId(), carte.getCarte().getValeur());
+		  // carte.getParent().setCarteVal(carte.getCarte().getId(), carte.getCarte().getValeur());
 		    carte.setVal(str);
 		  } catch (UnsupportedFlavorException e){
 		    e.printStackTrace();
@@ -94,7 +91,14 @@ public class Transfert<T> extends TransferHandler implements EventListener
 		 
 		     //On retourne un nouvel objet implémentant l'interface Transferable
 		     //StringSelection impTlémente cette interface,  nous l'utilisons donc
-		     return new StringSelection(carte.getVal()+":"+carte.getCarte().getId());
+		  
+		  
+		  //ERREUR DANS la convertion en string
+		  
+		 String sr =  Carte.toString(carte);
+		 System.out.println("serial = "+sr);
+		     return new StringSelection(sr);
+		  
 	  }
 	  
 		 public void addClickListener(DnDListener listener)
@@ -107,17 +111,19 @@ public class Transfert<T> extends TransferHandler implements EventListener
 
 		     
 		 }
-		 protected void fireAchatDeFactory(String name) 
+		 protected void fireDeposer(DnDEvent e) 
 		 {  
 		         for(DnDListener listener : getClickListener())
 		         {
-		        	 listener.deposer(new DnDEvent(null, null));
+		        	 listener.deposer(e);
 		         }
 		 }
-	@Override
-	public void handleEvent(Event evt) {
-		// TODO Auto-generated method stub
-		
-	}
 
+		 protected void fireGlisser(DnDEvent e) 
+		 {  
+		         for(DnDListener listener : getClickListener())
+		         {
+		        	 listener.deposer(e);
+		         }
+		 }
 }

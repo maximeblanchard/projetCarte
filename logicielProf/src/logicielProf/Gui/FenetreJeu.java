@@ -29,19 +29,19 @@ public class FenetreJeu<T> extends JFrame
 	private static final long serialVersionUID = 1L;
 	private JPanel mainPane;
 	private PanelGauche panelGauche;
-	private PanelDroit<T> panelDroit;
+	private PanelDroit panelDroit;
 	private JPanel panelHaut;
 	private JPanel panelBas;
 	private JButton envoyer;
 	private final EventListenerList listeners = new EventListenerList();
 	
 	
-	public FenetreJeu (Jeu<T> jeu)
+	public FenetreJeu (Jeu jeu)
 	{
 
 		// init variable
 		mainPane = new JPanel();
-		panelDroit = new PanelDroit<T>(jeu.getListeDeCarte());
+		panelDroit = new PanelDroit(jeu.getListeDeCarte());
 		panelGauche = new  PanelGauche();
 		panelBas = new JPanel();
 		panelHaut = new JPanel();

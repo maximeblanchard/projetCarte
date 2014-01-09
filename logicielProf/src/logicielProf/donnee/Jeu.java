@@ -2,13 +2,13 @@ package logicielProf.donnee;
 
 import java.util.ArrayList;
 
-public class Jeu<T>
+public class Jeu
 {
 	private String nom;
 	private int id;
-	private ArrayList<Carte<T>> listeDeCarte;
+	private ArrayList<SuperCarte> listeDeCarte;
 	
-	public Jeu(String nom, int id, ArrayList<Carte<T>> listeDeCarte) 
+	public Jeu(String nom, int id, ArrayList<SuperCarte> listeDeCarte) 
 	{
 		
 		this.nom = nom;
@@ -28,7 +28,7 @@ public class Jeu<T>
 		return id;
 	}
 
-	public ArrayList<Carte<T>> getListeDeCarte() {
+	public ArrayList<SuperCarte> getListeDeCarte() {
 		return listeDeCarte;
 	}
 	

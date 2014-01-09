@@ -2,9 +2,9 @@ package logicielProf.donnee;
 
 public class SuperCarte
 {
-	private int posDep;
-	private int posAtt;
-	private int id;
+	protected int posDep;
+	protected int posAtt;
+	protected int id;
 	
 	/**
 	 * 
