@@ -1,10 +1,16 @@
-package logicielProf.Gui;
+package logicielProf.Gui.fenetrejeu;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -33,7 +39,10 @@ public class CarteAff extends JPanel
 	public CarteAff(SuperCarte nouvCarte,PanelDroit nouvParent)
 	{
 		// on set le transfer handler
-		setTransferHandler(new Transfert(this));
+		Transfert th = new Transfert(this);
+		
+		setTransferHandler(th);
+		
 		
 		carte = nouvCarte;
 		setPreferredSize(new Dimension(50, 100));
@@ -41,7 +50,7 @@ public class CarteAff extends JPanel
 		this.setBorder(new LineBorder(Color.black));
 		
 		parent = nouvParent;
-		
+		th.addDnDListener(parent);
 		
 		this.addMouseListener(new MouseAdapter(){
 	        
@@ -91,6 +100,52 @@ public class CarteAff extends JPanel
 	{
 		return parent;
 	}
+    public static String toString( Serializable o )
+    {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream oos;
+		try 
+		{
+			oos = new ObjectOutputStream( baos );
+	        oos.writeObject( o );        
+	        oos.close();
+		}
+        catch (IOException e)
+        {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String res = new String(baos.toByteArray());
+		try {
+			baos.close();
+		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        return res;
+    }
+    public static Object fromString( String s )  
+    {
+        byte [] data = s.getBytes();
+        ObjectInputStream ois;
+        Object o = null;
+		try 
+		{
+			
+		ois = new ObjectInputStream(  new ByteArrayInputStream(  data ) );
+         o  = ois.readObject();
+        ois.close();
+		
+		} 
+		catch ( IOException | ClassNotFoundException  e) 
+		{
+			// TODO Auto-generated catch block
+			System.out.println("ci");
+			e.printStackTrace();
+		}
+        return  o;
+    }
 
 
 	

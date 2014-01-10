@@ -1,4 +1,4 @@
- package logicielProf.Gui;
+ package logicielProf.Gui.fenetrejeu;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -15,7 +15,8 @@ public class PanelGauche extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public PanelGauche(){
+	public PanelGauche()
+	{
 		
 		BorderLayout bLayout = new BorderLayout();
 		this.setLayout(bLayout);

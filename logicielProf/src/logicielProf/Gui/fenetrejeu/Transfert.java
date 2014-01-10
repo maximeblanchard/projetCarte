@@ -1,4 +1,4 @@
-package logicielProf.Gui;
+package logicielProf.Gui.fenetrejeu;
 
 
 
@@ -14,7 +14,6 @@ import javax.swing.TransferHandler;
 import javax.swing.event.EventListenerList;
 
 import logicielProf.donnee.Carte;
-import logicielProf.event.DnDEvent;
 import logicielProf.event.DnDListener;
 
 public class Transfert extends TransferHandler 
@@ -59,13 +58,8 @@ public class Transfert extends TransferHandler
 		  try {
 		    //Nous récupérons nos données en spécifiant ce que nous attendons		
 		    str = (String)data.getTransferData(DataFlavor.stringFlavor);
-		    
-		   Carte c =  (Carte) Carte.fromString(str);
-		    
-		   System.out.println(c);
+		    fireDeposer((Carte)carte.getCarte());
 
-		  // carte.getParent().setCarteVal(carte.getCarte().getId(), carte.getCarte().getValeur());
-		    carte.setVal(str);
 		  } catch (UnsupportedFlavorException e){
 		    e.printStackTrace();
 		  } catch (IOException e) {
@@ -95,35 +89,36 @@ public class Transfert extends TransferHandler
 		  
 		  //ERREUR DANS la convertion en string
 		  
-		 String sr =  Carte.toString(carte);
-		 System.out.println("serial = "+sr);
-		     return new StringSelection(sr);
+		 //String sr =  CarteAff.toString(carte);
+		// System.out.println("serial = "+sr+"fin ser\n\n");
+		 fireGlisser((Carte)carte.getCarte());
+		     return new StringSelection("f");
 		  
 	  }
 	  
-		 public void addClickListener(DnDListener listener)
+		 public void addDnDListener(DnDListener listener)
 		 {
 		     listeners.add(DnDListener.class, listener);
 		 }
-		 public DnDListener[] getClickListener()
+		 public DnDListener[] getDnDListener()
 		 {
 		     return listeners.getListeners(DnDListener.class);
 
 		     
 		 }
-		 protected void fireDeposer(DnDEvent e) 
+		 protected void fireDeposer(Carte e) 
 		 {  
-		         for(DnDListener listener : getClickListener())
+		         for(DnDListener listener : getDnDListener())
 		         {
 		        	 listener.deposer(e);
 		         }
 		 }
 
-		 protected void fireGlisser(DnDEvent e) 
+		 protected void fireGlisser(Carte e) 
 		 {  
-		         for(DnDListener listener : getClickListener())
+		         for(DnDListener listener : getDnDListener())
 		         {
-		        	 listener.deposer(e);
+		        	 listener.glisser(e);
 		         }
 		 }
 }
