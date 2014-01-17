@@ -9,7 +9,7 @@ public class Carte<T extends Object> extends SuperCarte implements Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private T valeur2;
+	protected T valeur2;
 	
 	/**
 	 * 
