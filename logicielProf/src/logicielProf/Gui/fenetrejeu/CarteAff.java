@@ -3,6 +3,7 @@ package logicielProf.Gui.fenetrejeu;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.ByteArrayInputStream;
@@ -72,8 +73,12 @@ public class CarteAff extends JPanel
 			{
 				val = ((Carte)carte).getValeur()+"";
 			}
-			
-			this.add(new JLabel(val));
+			setLayout(new BorderLayout());
+			JLabel label = new JLabel(val,JLabel.CENTER);
+			label.setFont(new Font("arial", Font.BOLD, 20));
+			label.setPreferredSize(new Dimension(30,30));
+			label.setHorizontalTextPosition(JLabel.CENTER);
+			this.add(label,BorderLayout.CENTER);
 		
 
 		
