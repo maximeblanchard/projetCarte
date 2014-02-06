@@ -12,7 +12,7 @@ public class PanelDroit extends JPanel implements DnDListener
 {
 
 	/**
-	 * 
+	 * sfgdgfdtsfg,ft
 	 */
 	private static final long serialVersionUID = 1L;
 	private ArrayList<SuperCarte> cartes;
