@@ -25,7 +25,7 @@ public class PanelDroit extends JPanel implements DnDListener
 	{
 
 		cartes = nouvCartes;
-		this.setBackground(Color.BLUE);
+		//this.setBackground(Color.BLUE);
 		//setLayout(new GridLayout(2, 10));
 
 		for(int i = 0;i<cartes.size();i++)
@@ -90,10 +90,10 @@ public class PanelDroit extends JPanel implements DnDListener
 
 		int posSource = source.getPosAtt();
 		int posCible = cible.getPosAtt();
-		System.err.println("echange : cible="+cartes.get(posCible)+" source="+cartes.get(posSource));
+		//System.err.println("echange : cible="+cartes.get(posCible)+" source="+cartes.get(posSource));
 
-		System.err.println(" data "+ source.getId()+" "+source.getPosAtt()+"et  "+cible.getId()+" "+cible.getPosAtt());
-		System.err.println("CARTEAPRES : cible="+cartes.get(posCible+1)+" source="+cartes.get(posSource));
+		//System.err.println(" data "+ source.getId()+" "+source.getPosAtt()+"et  "+cible.getId()+" "+cible.getPosAtt());
+		//System.err.println("CARTEAPRES : cible="+cartes.get(posCible+1)+" source="+cartes.get(posSource));
 
 		//EAPRES : cible="+cartes.get(posCible+1)+" source="+cartes.get(posSource));
 
@@ -102,15 +102,15 @@ public class PanelDroit extends JPanel implements DnDListener
 		
 		cartes.set(posSource, cible);
 		cartes.set(posCible, source);
-		System.err.println("echange : cible="+cible.getId()+" "+posSource+" source="+source.getId()+" "+posCible);
+		//System.err.println("echange : cible="+cible.getId()+" "+posSource+" source="+source.getId()+" "+posCible);
 
 
 		
 
-		System.err.println("CARTEAPRESAJOUT : cible="+cartes.get(posCible+1)+" source="+cartes.get(posSource));
+		//System.err.println("CARTEAPRESAJOUT : cible="+cartes.get(posCible+1)+" source="+cartes.get(posSource));
 
-		System.err.println("echange : cible="+cartes.get(posCible)+" source="+cartes.get(posSource));
-
+		//System.err.println("echange : cible="+cartes.get(posCible)+" source="+cartes.get(posSource));
+																																													
 		/*Object tempValSource = ((Carte)cartes.get(source.getId())).getValeur();
 		System.out.println("echange");
 		((Carte)cartes.get(source.getId())).setValeur(((Carte)cartes.get(cible.getId())).getValeur());
