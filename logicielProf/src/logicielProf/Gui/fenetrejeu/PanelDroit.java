@@ -1,9 +1,14 @@
 package logicielProf.Gui.fenetrejeu;
 
+import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import sun.awt.image.ImageAccessException;
 import logicielProf.donnee.Carte;
 import logicielProf.donnee.SuperCarte;
 import logicielProf.event.DnDListener;
@@ -67,12 +72,19 @@ public class PanelDroit extends JPanel implements DnDListener
 	{
 		// TODO Auto-generated method stub
 		System.err.println("glissé !"+e.getPosAtt());
+		Toolkit tk = Toolkit.getDefaultToolkit();
+		 Image img = tk.getImage("carte.png");
+		Cursor monCurseur = tk.createCustomCursor(img, new Point(0, 0), "mon oeil");
+		setCursor(monCurseur);
 		estSaisie = e;
 	}
 	@Override
 	public void deposer(Carte<?> e) 
 	{
 		// TODO Auto-generated method stub
+		
+		Cursor monCurseu = Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR);
+		setCursor(monCurseu);
 		System.err.println("deposé !"+e.getPosAtt());
 		echange(estSaisie, e);
 		refresh();
@@ -86,7 +98,10 @@ public class PanelDroit extends JPanel implements DnDListener
 	 * **/
 	public void echange(Carte<?> source,Carte<?> cible)
 	{
-
+		Toolkit tk = Toolkit.getDefaultToolkit();
+		 Image img = tk.getImage("carte.png");
+		Cursor monCurseur = tk.createCustomCursor(img, new Point(0, 0), "mon oeil");
+		setCursor(monCurseur);
 		int posSource = source.getPosAtt();
 		int posCible = cible.getPosAtt();
 		//System.err.println("echange : cible="+cartes.get(posCible)+" source="+cartes.get(posSource));
