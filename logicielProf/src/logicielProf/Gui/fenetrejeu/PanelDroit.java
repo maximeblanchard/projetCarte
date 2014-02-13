@@ -4,6 +4,9 @@ import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -22,6 +25,7 @@ public class PanelDroit extends JPanel implements DnDListener
 	private static final long serialVersionUID = 1L;
 	private ArrayList<SuperCarte> cartes;
 	private Carte<?> estSaisie;
+	private Boolean curEstCarte = false;
 
 
 
@@ -36,6 +40,28 @@ public class PanelDroit extends JPanel implements DnDListener
 		{
 			add(new CarteAff(cartes.get(i),this));
 		}
+		
+		addMouseMotionListener(new MouseMotionListener() {
+			
+			@Override
+			public void mouseMoved(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+
+
+			}
+			
+			@Override
+			public void mouseDragged(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+	
+					System.out.println("ici");
+					Toolkit tk = Toolkit.getDefaultToolkit();
+					 Image img = tk.getImage("carte.png");
+					Cursor monCurseur = tk.createCustomCursor(img, new Point(0, 0), "mon oeil");
+				
+					setCursor(monCurseur);			
+			}
+		});
 
 
 	}
@@ -71,6 +97,7 @@ public class PanelDroit extends JPanel implements DnDListener
 	public void glisser(Carte<?> e) 
 	{
 		// TODO Auto-generated method stub
+		curEstCarte = true;
 		System.err.println("glissé !"+e.getPosAtt());
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		 Image img = tk.getImage("carte.png");
@@ -82,7 +109,7 @@ public class PanelDroit extends JPanel implements DnDListener
 	public void deposer(Carte<?> e) 
 	{
 		// TODO Auto-generated method stub
-		
+		curEstCarte = false;
 		Cursor monCurseu = Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR);
 		setCursor(monCurseu);
 		System.err.println("deposé !"+e.getPosAtt());
@@ -98,10 +125,9 @@ public class PanelDroit extends JPanel implements DnDListener
 	 * **/
 	public void echange(Carte<?> source,Carte<?> cible)
 	{
-		Toolkit tk = Toolkit.getDefaultToolkit();
-		 Image img = tk.getImage("carte.png");
-		Cursor monCurseur = tk.createCustomCursor(img, new Point(0, 0), "mon oeil");
-		setCursor(monCurseur);
+
+		
+		
 		int posSource = source.getPosAtt();
 		int posCible = cible.getPosAtt();
 		//System.err.println("echange : cible="+cartes.get(posCible)+" source="+cartes.get(posSource));

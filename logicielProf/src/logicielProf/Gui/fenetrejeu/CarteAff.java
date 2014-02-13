@@ -4,6 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.ByteArrayInputStream;
@@ -35,13 +38,15 @@ public class CarteAff extends JPanel
 	private SuperCarte carte;
 	private String val;
 	private PanelDroit parent;
+	private Image image;
 	
 	@SuppressWarnings("rawtypes")
 	public CarteAff(SuperCarte nouvCarte,PanelDroit nouvParent)
 	{
 		// on set le transfer handler
 		Transfert th = new Transfert(this);
-		
+		Toolkit tk = Toolkit.getDefaultToolkit();
+		   image = tk.getImage("carte.png");
 		setTransferHandler(th);
 		
 		
@@ -67,6 +72,8 @@ public class CarteAff extends JPanel
 		        handle.exportAsDrag(cible, e, TransferHandler.MOVE);
 		      }
 		   });
+		
+		
 		
 		
 			if(carte instanceof Carte)
@@ -150,6 +157,9 @@ public class CarteAff extends JPanel
 			e.printStackTrace();
 		}
         return  o;
+    }
+    public void paintComponent(Graphics g) {
+        g.drawImage(image, 0, 0, null);
     }
 
 
