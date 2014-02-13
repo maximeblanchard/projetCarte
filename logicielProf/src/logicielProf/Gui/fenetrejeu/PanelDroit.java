@@ -98,7 +98,7 @@ public class PanelDroit extends JPanel implements DnDListener
 	{
 		// TODO Auto-generated method stub
 		curEstCarte = true;
-		System.err.println("glissé ! camillia"+e.getPosAtt());
+		System.err.println("glissé ! maxime"+e.getPosAtt());
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		 Image img = tk.getImage("carte.png");
 		Cursor monCurseur = tk.createCustomCursor(img, new Point(0, 0), "mon oeil");
