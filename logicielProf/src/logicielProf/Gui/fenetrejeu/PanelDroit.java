@@ -16,6 +16,12 @@ import logicielProf.donnee.Carte;
 import logicielProf.donnee.SuperCarte;
 import logicielProf.event.DnDListener;
 
+/**
+ * cette classe permet de gérer le le panel droit de la fenetre jeu. 
+ * ici on gère le drag and drop des cartes
+ * @author maxime
+ *
+ */
 public class PanelDroit extends JPanel implements DnDListener
 {
 
@@ -67,6 +73,11 @@ public class PanelDroit extends JPanel implements DnDListener
 	}
 
 	@SuppressWarnings("unchecked")
+	/**
+	 * cette fonction permet de change la valeur d'un carte
+	 * @param idCarte
+	 * @param val
+	 */
 	public  void setCarteVal(int idCarte, Object val)
 	{
 		for(int i = 0;i<cartes.size();i++)
@@ -82,6 +93,9 @@ public class PanelDroit extends JPanel implements DnDListener
 		refresh();
 
 	}
+	/**
+	 * cette methode permet de rafraichir tout le panel courant
+	 */
 	public void refresh()
 	{
 		this.removeAll();

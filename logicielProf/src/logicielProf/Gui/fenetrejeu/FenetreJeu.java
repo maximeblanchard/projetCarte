@@ -35,7 +35,11 @@ public class FenetreJeu<T> extends JFrame
 	private JButton envoyer;
 	private final EventListenerList listeners = new EventListenerList();
 	
-	
+	/**
+	 * cette class permet de genre la fenetre jeu qui corespond a la fenetre ou l'on configure le résultat attendu
+	 * 
+	 * @param jeu
+	 */
 	public FenetreJeu (Jeu jeu)
 	{
 
@@ -51,6 +55,8 @@ public class FenetreJeu<T> extends JFrame
 		panelBas.setLayout(new BorderLayout());
 		panelBas.add(new JLabel("Message informatif"),BorderLayout.WEST);
 		panelBas.add(envoyer,BorderLayout.EAST);
+		
+		
 		envoyer.addActionListener(new ActionListener() {
 			
 			@Override
@@ -97,6 +103,9 @@ public class FenetreJeu<T> extends JFrame
 	 {
 	     return listeners.getListeners(ClickListenerJeu.class);
 	 }
+	 /**
+	  * methode appeler pour ClickListenerJeu
+	  */
 	 protected void fireBtSendClick()
 	 {
          for(ClickListenerJeu listener : getClickListener())

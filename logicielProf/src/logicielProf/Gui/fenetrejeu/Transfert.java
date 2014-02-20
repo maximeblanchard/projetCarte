@@ -15,7 +15,10 @@ import javax.swing.event.EventListenerList;
 
 import logicielProf.donnee.Carte;
 import logicielProf.event.DnDListener;
-
+/**
+ * cette classe permet de personalisé le TransferHandler utiliser pour le drag and drop
+ * 
+ */
 public class Transfert extends TransferHandler 
 {
 

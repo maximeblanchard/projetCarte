@@ -13,6 +13,8 @@ public class Principale {
 		// TODO Auto-generated method stub
 		ArrayList<SuperCarte> liste = new ArrayList<SuperCarte>();
 		
+		
+		// on inctencie les cartes ici pour pouvoir tester
 		liste.add(new Carte<Integer>(0, 0, 1, 1));
 		liste.add(new Carte<Integer>(0, 1, 2, 2));
 		liste.add(new Carte<Integer>(0, 2, 3, 3));

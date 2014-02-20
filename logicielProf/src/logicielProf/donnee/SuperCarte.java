@@ -1,5 +1,11 @@
 package logicielProf.donnee;
 
+/**
+ * Cette classe est une classe générique de Carte<T> en effet on peut stocker tout
+ * type de cartes dans cette classe 
+ * @author maxime
+ *
+ */
 public class SuperCarte
 {
 	protected int posDep;

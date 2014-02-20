@@ -27,9 +27,8 @@ import logicielProf.donnee.SuperCarte;
 public class CarteAff extends JPanel
 {
 	/**
-	 * 
-	 * 
-	 * 
+	 * cette classe permet de gérer l'affichage des cartes on prend en paramettre 
+	 * une SuperCarte et on l'affiche grâce ici car on étend jpanel  
 	 * 
 	 */
 	

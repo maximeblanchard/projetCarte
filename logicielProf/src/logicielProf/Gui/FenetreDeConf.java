@@ -7,7 +7,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-
+/**
+ * cette classe sert a gere la fenetre responsable de 
+ * la configuration du jeu a savoir le type de jeu et le nombre de carte
+ */
 public class FenetreDeConf {
 	      
 	 public FenetreDeConf(){

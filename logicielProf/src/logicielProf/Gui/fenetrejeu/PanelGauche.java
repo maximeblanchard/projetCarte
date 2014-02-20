@@ -11,7 +11,8 @@ import javax.swing.JPanel;
 public class PanelGauche extends JPanel {
 	
 	/**
-	 * 
+	 * cette classe permet de gérer le panel gauche de la fenetre jeu avec 
+	 * le bouton ajouter carte et la corbeil sour supprimer une carte
 	 */
 	private static final long serialVersionUID = 1L;
 

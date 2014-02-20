@@ -10,7 +10,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+/**
+ * cette classe permet de gere la fenettre d'accueil pour savoir si on souhaite ouvrir un fichier existant 
+ * ou commencer un nouveau jeu
+ * @author maxime
+ *
+ */
 public class Accueil extends JFrame{
 	/**
 	 * 

@@ -1,7 +1,12 @@
 package logicielProf.donnee;
 
 import java.util.ArrayList;
-
+/**
+ * la classe jeu permet de sauvegarer tout les parammetre du jeu actuelle 
+ * la liste des carten et le nom du jeu 
+ * @author maxime
+ *
+ */
 public class Jeu
 {
 	private String nom;

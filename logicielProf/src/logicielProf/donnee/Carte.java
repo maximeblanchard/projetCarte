@@ -2,6 +2,14 @@ package logicielProf.donnee;
 
 import java.io.Serializable;
 
+/**
+ * Cette classe permet de gérer les types de carte 
+ * le type de la valeur de la carte est le paramettre T
+ * cette classe etend Super carte et est sérializable
+ * @author maxime
+ *
+ * @param <T>
+ */
 public class Carte<T extends Object> extends SuperCarte implements Serializable
 {
 
