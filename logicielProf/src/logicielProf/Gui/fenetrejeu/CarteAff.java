@@ -52,7 +52,7 @@ public class CarteAff extends JPanel
 		carte = nouvCarte;
 		setPreferredSize(new Dimension(50, 100));
 		this.setLayout(new BorderLayout());
-		this.setBorder(new LineBorder(Color.black));
+		//this.setBorder(new LineBorder(Color.black));
 		
 		parent = nouvParent;
 		th.addDnDListener(parent);
